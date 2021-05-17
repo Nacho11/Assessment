@@ -1,0 +1,29 @@
+Create a docker container and deploy it to Kubernetes cluster
+
+Creating a docker container -
+
+docker build -t model .
+docker run -p 8000:8000 model
+docker push nachiketh11/model
+
+Deploying to Kubernetes
+minikube start (setup a local kubernetes cluster)
+kubectl apply -f bb.yaml
+kubectl get pods
+kubectl get deployments
+kubectl get service
+kubectl logs model
+kubectl port-forward bb_model_sajdhjkahsd 5000:5000
+
+Endpoint available on api - http://0.0.0.0:8000/predict
+
+Body to send -
+{
+	"Issue time" : 1384,
+	"Agency": 22,
+	"Fine amount" : 66,
+	"Body Style Code" : 23,
+	"Color Code" : 22
+}
+
+Output - TOYT
